@@ -1,48 +1,31 @@
 <template>
   <div id="app">
     <img style="width:100px" src="./assets/Pig-PNG-Pic.png">
-    <h2 v-bind:id="theId" >{{msg}} {{ok ? "YES" : "NO"}}</h2>
-    NEJ
-    <HelloWorld/>
+    <InfoList/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-import axios from 'axios';
+import InfoList from './components/InfoList';
 
 export default {
     name: 'app',
     components: {
-        HelloWorld
-    },
-    data() {
-        return {
-            msg: 'Anders says ',
-            theId: 'B5455DB0-E3BA-401C-9C05-150C97D16722',
-            ok: true
-        };
-    },
-    mounted() {
-        console.log('Mounted!');
-        axios.get('http://localhost:3000/getall').then(response => {
-            console.log('data fetched!');
-        });
+        InfoList
     }
 };
 </script>
 
 <style>
 #app {
-    font-family: 'Calibri', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    font-family:             'Calibri', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:  antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+    text-align:              center;
+    color:                   #2c3e50;
+    margin-top:              60px;
 }
 h2 {
-    font-weight: 100;
-    text-decoration: underline;
+    font-weight: bold;
 }
 </style>
