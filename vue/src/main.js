@@ -2,8 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
-import 'vue-material/dist/vue-material.min.css'
 
 Vue.config.productionTip = false
 
@@ -15,6 +13,3 @@ new Vue({
 })
 
 Vue.config.devtools = true
-Vue.use(MdButton)
-Vue.use(MdContent)
-Vue.use(MdTabs)

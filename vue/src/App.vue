@@ -8,31 +8,38 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from './components/HelloWorld';
+import axios from 'axios';
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  },
-  data() {
-      return {
-          msg: 'Anders says ',
-          theId: 'B5455DB0-E3BA-401C-9C05-150C97D16722',
-          ok: true
-      };
-  }
-}
+    name: 'app',
+    components: {
+        HelloWorld
+    },
+    data() {
+        return {
+            msg: 'Anders says ',
+            theId: 'B5455DB0-E3BA-401C-9C05-150C97D16722',
+            ok: true
+        };
+    },
+    mounted() {
+        console.log('Mounted!');
+        axios.get('http://localhost:3000/getall').then(response => {
+            console.log('data fetched!');
+        });
+    }
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Calibri', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: 'Calibri', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
 }
 h2 {
     font-weight: 100;
