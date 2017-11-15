@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
-    <h2 v-if="!loading">Loaded {{ allPeople.data.length }} items</h2>
+    <h2 v-if="!loading">Loaded {{ allPeople.length }} items</h2>
     <h2 v-if="loading">LOADING!</h2>
     <ul v-if="!loading">
-        <template v-for="item in allPeople.data">
-            <li v-bind:key="item.id">{{item.first_name}}</li>
+        <template v-for="item in allPeople">
+            <li v-bind:key="item.id">{{item.first_name}} {{item.last_name}}</li>
         </template>
     </ul>
   </div>
@@ -20,17 +20,22 @@ export default {
         return {
             msg: 'Vue FTW',
             stuff: this.loadedData,
-            allPeople: {},
+            allPeople: [],
             loading: true
         };
     },
     mounted() {
-        console.log('Mounted!')
+        const vm = this;
+        console.log('Infolist mounted');
         this.loading = true;
         axios.get('http://localhost:3000/getall').then(response => {
-            console.log('data fetched!', response);
-            this.allPeople = response;
-            this.loading.false;
+            this.loading = false;
+            const step = 10;
+            for (let i = 0; i <= response.data.length - step; i += step) {
+                this.allPeople = response.data.slice(i, i + step);
+                console.log(this.allPeople);
+                vm.$forceUpdate();
+            }
         });
     }
 };
