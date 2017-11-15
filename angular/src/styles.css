@@ -1,0 +1,33 @@
+ul {
+    background: #D46A6A;
+    padding: 20px;
+    list-style: none;
+    padding: 5px;
+}
+ul li {
+    background: #FFAAAA;
+    margin: 5px;
+    padding: 5px;
+}
+
+ul li:before {
+    content: "d['.']b ";
+    color: #550000; /* or whatever color you prefer */
+}
+
+body{
+    background-color: #801515;
+    color: #030303;
+}
+
+h1{
+    text-align:center;
+}
+
+.half-width{
+    width: 50%;
+}
+
+.center{
+    padding-left: 25%;
+}
