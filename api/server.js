@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const data = require('./MOCK_DATA.json');
+const cors = require('cors');
+
+app.use(cors());
 
 app.get('/', (req, res) => res.sendFile('readme.md', {root: '.'}));
 
