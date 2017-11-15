@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Hero } from '../../hero';
 import { HEROES } from '../../mock-data';
 
@@ -10,9 +10,12 @@ import { HEROES } from '../../mock-data';
 export class ListComponent implements OnInit {
   heroes = HEROES;
 
+  @Input() listData: object;
+
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
