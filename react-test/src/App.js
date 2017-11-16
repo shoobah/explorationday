@@ -8,21 +8,16 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: []
+            list: [],
+            loading: true
         };
     }
     componentDidMount() {
-        console.log('componentDidMount');
-        this.loading = true;
         axios.get('http://localhost:3000/getall').then(response => {
-            this.loading = false;
-            const step = 10;
-            for (let i = 0; i <= response.data.length - step; i += step) {
-                this.setState({
-                    list: response.data.slice(i, i + step)
-                });
-                console.log(this.state.list);
-            }
+            this.setState({
+                loading: false,
+                list: response.data
+            });
         });
     }
     render() {
@@ -30,8 +25,9 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
+                    <h1 className="App-title">Testing React</h1>
                 </header>
+                {this.state.loading ? <h2>Loading</h2> : ''}
                 <NameList items={this.state.list} />
             </div>
         );
@@ -39,3 +35,17 @@ class App extends Component {
 }
 
 export default App;
+
+// console.log('componentDidMount');
+// this.loading = true;
+// axios.get('http://localhost:3000/getall').then(response => {
+//     this.loading = false;
+//     const step = 10;
+//     for (let i = 0; i <= response.data.length - step; i += step) {
+//         this.setState({
+//             list: response.data.slice(i, i + step)
+//         });
+//         this.forceUpdate();
+//         console.log(this.state.list);
+//     }
+// });

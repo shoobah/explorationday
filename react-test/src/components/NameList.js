@@ -3,7 +3,7 @@ import React from 'react';
 const namelist = props => {
     const listItems = props.items.map(item => {
         return (
-            <li>
+            <li key={item.id}>
                 {item.first_name} {item.last_name}
             </li>
         );
